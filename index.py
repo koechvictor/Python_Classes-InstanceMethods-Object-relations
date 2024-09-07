@@ -12,3 +12,23 @@ class Customer:
             self._name = value
         else:
             raise ValueError("Name must be a string between 1 and 15 characters.")
+        
+class Coffee:
+    def __init__(self, name):
+        if isinstance(name, str) and len(name) >= 3:
+            self._name = name
+        else:
+            raise ValueError("Name must be a string with at least 3 characters.")
+    
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        if hasattr(self, '_name'):
+            raise AttributeError("Cannot change the name after the coffee is instantiated.")
+        if isinstance(value, str) and len(value) >= 3:
+            self._name = value
+        else:
+            raise ValueError("Name must be a string with at least 3 characters.")
