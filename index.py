@@ -32,3 +32,28 @@ class Coffee:
             self._name = value
         else:
             raise ValueError("Name must be a string with at least 3 characters.")
+        
+class Order:
+    def __init__(self, customer, coffee, price):
+        if not isinstance(customer, Customer):
+            raise TypeError("customer must be an instance of Customer")
+        if not isinstance(coffee, Coffee):
+            raise TypeError("coffee must be an instance of Coffee")
+        if not isinstance(price, float) or not (1.0 <= price <= 10.0):
+            raise ValueError("price must be a float between 1.0 and 10.0")
+        
+        self._customer = customer
+        self._coffee = coffee
+        self._price = price
+
+    @property
+    def price(self):
+        return self._price
+
+    @price.setter
+    def price(self, value):
+        if hasattr(self, '_price'):
+            raise AttributeError("Cannot change the price after the order is instantiated.")
+        if not isinstance(value, float) or not (1.0 <= value <= 10.0):
+            raise ValueError("price must be a float between 1.0 and 10.0")
+        self._price = value
