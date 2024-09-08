@@ -28,8 +28,7 @@ class Customer:
         if not isinstance(price, float) or not (1.0 <= price <= 10.0):
             raise ValueError("price must be a float between 1.0 and 10.0")
         return Order(self, coffee, price)
-
-
+    
 class Coffee:
     def __init__(self, name):
         if isinstance(name, str) and len(name) >= 3:
@@ -65,8 +64,7 @@ class Coffee:
             return 0
         total_price = sum(order.price for order in orders)
         return total_price / len(orders)
-
-
+    
 class Order:
     all_orders = []
 
